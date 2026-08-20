@@ -71,7 +71,7 @@ def create_table(conn):
         cur.execute('''
             CREATE TABLE IF NOT EXISTS blog_posts (
                 id SERIAL PRIMARY KEY,
-                title VARCHAR(500) NOT NULL,
+                title VARCHAR(500) NOT NULL UNIQUE,
                 publication_date VARCHAR(100) NOT NULL,
                 author VARCHAR(200),
                 scraped_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
