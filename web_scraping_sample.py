@@ -28,38 +28,23 @@ def scrape_blog_posts():
     soup = BeautifulSoup(response.content, 'html.parser')
     posts = []
 
-    # Scrape featured post (the main highlighted post)
+    # Scrape latest news from the shrubbery section
     featured = soup.find('div', class_='shrubbery')
     if featured:
-        title_tag = featured.find('h2')
-        if title_tag:
-            link = title_tag.find('a')
-            title = link.text.strip() if link else title_tag.text.strip()
-            date_tag = featured.find('time')
-            date = date_tag.text.strip() if date_tag else 'Unknown'
-            author_tag = featured.find('span', class_='author')
-            author = author_tag.text.strip() if author_tag else 'Unknown'
-            posts.append({
-                'title': title,
-                'publication_date': date,
-                'author': author,
-            })
-
-    # Scrape latest news section
-    news_section = soup.find('div', id='newslist')
-    if news_section:
-        for item in news_section.find_all('li'):
-            title_tag = item.find('a')
-            title = title_tag.text.strip() if title_tag else 'Unknown'
-            date_tag = item.find('time')
-            date = date_tag.text.strip() if date_tag else 'Unknown'
-            author_tag = item.find('span', class_='author')
-            author = author_tag.text.strip() if author_tag else 'Unknown'
-            posts.append({
-                'title': title,
-                'publication_date': date,
-                'author': author,
-            })
+        for item in featured.find_all('li'):
+            h3 = item.find('h3')
+            if h3:
+                link = h3.find('a')
+                title = link.text.strip() if link else 'Unknown'
+                time_tag = item.find('time')
+                date = time_tag.text.strip() if time_tag else 'Unknown'
+                author_tag = item.find('span', class_='author')
+                author = author_tag.text.strip() if author_tag else 'Unknown'
+                posts.append({
+                    'title': title,
+                    'publication_date': date,
+                    'author': author,
+                })
 
     print(f"Scraped {len(posts)} blog posts")
     return posts

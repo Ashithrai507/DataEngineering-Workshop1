@@ -6,21 +6,24 @@ MOCK_HTML = '''
 <html>
 <body>
     <div class="shrubbery">
-        <h2><a href="/blog/post1">Python 3.14 Released</a></h2>
-        <time>Aug. 19, 2026</time>
-        <span class="author">Written by Guido van Rossum</span>
-    </div>
-    <div id="newslist">
-        <li>
-            <a>Python 3.12.14 Available</a>
-            <time>Aug. 12, 2026</time>
-            <span class="author">Written by Python Team</span>
-        </li>
-        <li>
-            <a>Python 3.14.7 Released</a>
-            <time>Aug. 5, 2026</time>
-            <span class="author">Written by Python Team</span>
-        </li>
+        <h2 class="widget-title"><span>Latest News</span></h2>
+        <ul class="list-recent-posts menu">
+            <li>
+                <h3 class="event-title"><a href="/blog/post1">Python 3.14 Released</a></h3>
+                <p><time datetime="2026-08-19">Aug. 19, 2026</time></p>
+                <span class="author">Written by Guido van Rossum</span>
+            </li>
+            <li>
+                <h3 class="event-title"><a href="/blog/post2">Python 3.12.14 Available</a></h3>
+                <p><time datetime="2026-08-12">Aug. 12, 2026</time></p>
+                <span class="author">Written by Python Team</span>
+            </li>
+            <li>
+                <h3 class="event-title"><a href="/blog/post3">Python 3.14.7 Released</a></h3>
+                <p><time datetime="2026-08-05">Aug. 5, 2026</time></p>
+                <span class="author">Written by Python Team</span>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
